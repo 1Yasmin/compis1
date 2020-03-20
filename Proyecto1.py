@@ -29,7 +29,7 @@ from Thompson import Thompson
 from DFA import createDFA
 from graph import graficar 
 from D_AFD import D_DFA
-
+import copy
 
 class Stack:
      def __init__(self):
@@ -120,7 +120,8 @@ if __name__== "__main__":
     for a in postfix:
         tokens.append(str(a))
     print(tokens)
-    #Stack general
+
+    D_DFA_Tokens = copy.copy(tokens)
     
     #Contrucción del NFA 
     countState = 0
@@ -159,10 +160,21 @@ if __name__== "__main__":
     # Graficar AFD
     graficar(AFD.final_states, AFD.transitions, "AFD")
     
-    """
     #Construccion de AFD directo
-    tokens.append("#")
-    tokens.append(".")
-    print(tokens)
-    D_DFA(tokens)
-    """
+    D_DFA_Tokens.append("#")
+    D_DFA_Tokens.append(".")
+    print(D_DFA_Tokens)
+    D_DFA_Aut = D_DFA(D_DFA_Tokens)
+
+    # Guardar AFD en un archivo
+    file = open("D_DFA_Aut.txt", "w")
+    file.write("Estado inicial:  "+ str(D_DFA_Aut.initial_state)+"\n")
+    file.write("Estado(s) de aceptación:  "+ str(D_DFA_Aut.final_states)+"\n")
+    file.write("Estados:  "+ str(D_DFA_Aut.states)+"\n")
+    file.write("Símbolos:  "+ str(D_DFA_Aut.symbols)+"\n")
+    file.write("Transiciones:  "+ str(D_DFA_Aut.transitions)+"\n")
+    file.close()
+    # Graficar AFD
+    graficar(D_DFA_Aut.final_states, D_DFA_Aut.transitions, "D_DFA_Aut")
+
+    

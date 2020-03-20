@@ -1,5 +1,0 @@
-Estado inicial:  [0]
-Estado(s) de aceptación:  [3]
-Estados:  [0, 1, 2, 3]
-Símbolos:  ['a', 'd', 's']
-Transiciones:  [[0, 1, 'a'], [1, 2, 's'], [2, 3, 'd']]
