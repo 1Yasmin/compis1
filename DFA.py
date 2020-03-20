@@ -32,7 +32,8 @@ def createDFA(Autom):
     Aut = Automata()
     Aut.set_inicial([0])
     Symbols = Autom.symbols
-    Symbols.remove("3")
+    if ("3" in Symbols):
+        Symbols.remove("3")
     Symbols.sort()
     Aut.set_symbols(Symbols)
     while count_states < len(new_states):

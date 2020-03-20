@@ -18,19 +18,12 @@
     Tiempo que tarda cada AF en realizar la validacion de una cadena
     -Generar archivo por cada AF con 
             -Estados, simbolos, inicio, acepación, transcisión
-
-f = open("texto.txt", "r")  
-expresion = f.read()
-print(expresion)
-
 """
-
 
 import os
 import numpy as np
 from copy import deepcopy
 import time
-#from infixTopoxfix import Conversion
 from graphviz import Digraph
 from Thompson import Thompson
 from DFA import createDFA
@@ -129,7 +122,6 @@ if __name__== "__main__":
     print(tokens)
     #Stack general
     
-    """
     #Contrucción del NFA 
     countState = 0
     if(len(tokens) == 1):
@@ -166,9 +158,11 @@ if __name__== "__main__":
     file.close()
     # Graficar AFD
     graficar(AFD.final_states, AFD.transitions, "AFD")
+    
     """
     #Construccion de AFD directo
     tokens.append("#")
     tokens.append(".")
     print(tokens)
     D_DFA(tokens)
+    """
