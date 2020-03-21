@@ -30,6 +30,7 @@ from DFA import createDFA
 from graph import graficar 
 from D_AFD import D_DFA
 import copy
+from simulacion import *
 
 class Stack:
      def __init__(self):
@@ -177,4 +178,7 @@ if __name__== "__main__":
     # Graficar AFD
     graficar(D_DFA_Aut.final_states, D_DFA_Aut.transitions, "D_DFA_Aut")
 
-    
+    w = input("Ingrese cadena que desea validar: ")
+    print("Para NFA:", simulacionAutomataNFA(Aut, w))
+    print("Para DFA:", simulacionAutomataDFA(AFD, w))
+    print("Para DFA Directo:",simulacionAutomata(D_DFA_Aut, w))

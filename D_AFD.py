@@ -90,12 +90,25 @@ def D_DFA(arbol):
     for node in complete_tree:
         followpos(complete_tree, node[0])
 
+    print("******** Table ALL************")
+    print("id\tSymbol\tPos n\tfirstpos\tlastpos\tfollowpos")
+    for a in complete_tree:
+        if(len(a) == 6):
+            print(a[0],"\t",a[1],"\t",a[2],"\t\t",a[3],"\t",a[4],"\t",a[5])
+        elif(len(a) == 5):
+            print(a[0],"\t",a[1],"\t",a[2],"\t\t",a[3],"\t",a[4],"\t"," --")
+        elif(len(a) == 4):
+            print(a[0],"\t",a[1],"\t",a[2],"\t\t",a[3],"\t","--","\t"," --")
+        else:
+            print(a[0],"\t",a[1],"\t",a[2],"\t\t","--","\t","--","\t"," --")
+
+
     print("******** Table DFA************")
     print("Symbol\tPos n\tfirstpos\tlastpos\tfollowpos\t")
     table = []
     symbols = []
     for a in complete_tree:
-        if (len(a) == 6 or a[1] == "#"):
+        if (isinstance(a[2], int)):
             if(a[1] != "#"):
                 if a[1] not in symbols:
                     symbols.append(a[1])
@@ -118,7 +131,7 @@ def D_DFA(arbol):
     states.append(initial)
     Aut.set_inicial(initial)  
     Aut.set_symbols(symbols)  
-
+    print("Inicial", initial)
     count_states = 0
     while count_states < len(states):
         for sim in symbols:
